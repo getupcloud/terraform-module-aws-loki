@@ -18,7 +18,7 @@ release:
 		echo "Tree is not clean. Please commit and try again"; \
 		exit 1; \
 	fi
-	git pull --tags
+	git pull origin main --tags
 	git tag v$(VERSION)
-	git push --tags
-	git push
+	git push origin main --tags
+	git push origin main
