@@ -14,7 +14,7 @@ variable "cluster_oidc_issuer_url" {
 
 variable "service_account_namespace" {
   description = "Namespace of ServiceAccount for thanos"
-  default     = "monitoring"
+  default     = "logging"
 }
 
 variable "service_account_name" {

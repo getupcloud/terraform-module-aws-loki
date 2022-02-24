@@ -1,6 +1,5 @@
 locals {
   name_prefix = substr("${var.cluster_name}-loki", 0, 32)
- # arn_annotations = "${module.irsa_aws_loki.this.arn}"
 }
 
 data "aws_iam_policy_document" "aws_loki" {
@@ -25,7 +24,7 @@ data "aws_iam_policy_document" "aws_loki" {
     ]
 
     resources = [
-      "arn:aws:dynamodb:${var.region}:${var.account_id}:table/${local.name_prefix}*"
+      "arn:aws:dynamodb:${var.region}:${var.account_id}:table/index*"
     ]
   }
   statement {
