@@ -62,7 +62,7 @@ resource "aws_iam_policy" "aws_loki" {
 }
 
 
-module "irsa_aws_loki" {
+module "irsa_loki" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version = "~> 4.2"
 
@@ -93,22 +93,4 @@ resource "aws_s3_bucket_versioning" "versioning_loki" {
 resource "aws_s3_bucket_acl" "aws_loki" {
   bucket = aws_s3_bucket.aws_loki.id
   acl    = "private"
-}
-
-resource "kubernetes_service_account" "sa_loki" {
-  automount_service_account_token = true
-  metadata {
-    annotations = {
-      "eks.amazonaws.com/role-arn" = "${module.irsa_aws_loki.iam_role_arn}"
-    }
-    labels = {
-      "app.kubernetes.io/managed-by" = "terraform"
-      "app.kubernetes.io/name"       = "loki"
-    }
-    name      = "loki"
-    namespace = var.service_account_namespace
-  }
-  depends_on = [
-    module.irsa_aws_loki.id
-  ]
 }
