@@ -1,19 +1,19 @@
 output "iam_role_arn" {
   description = "ARN of IAM role"
-  value       = module.irsa_aws_kms.iam_role_arn
+  value       = module.irsa_loki.iam_role_arn
 }
 
 output "iam_role_name" {
   description = "Name of IAM role"
-  value       = module.irsa_aws_kms.iam_role_name
+  value       = module.irsa_loki.iam_role_name
 }
 
 output "iam_role_path" {
   description = "Path of IAM role"
-  value       = module.irsa_aws_kms.iam_role_path
+  value       = module.irsa_loki.iam_role_path
 }
 
 output "iam_role_unique_id" {
   description = "Unique ID of IAM role"
-  value       = module.irsa_aws_kms.iam_role_unique_id
+  value       = module.irsa_loki.iam_role_unique_id
 }
