@@ -90,7 +90,7 @@ resource "aws_s3_bucket_versioning" "versioning_loki" {
   }
 }
 
-resource "aws_s3_bucket_acl" "aws_loki" {
-  bucket = aws_s3_bucket.aws_loki.id
-  acl    = "private"
-}
+#resource "aws_s3_bucket_acl" "aws_loki" {
+#  bucket = aws_s3_bucket.aws_loki.id
+#  acl    = "private"
+#}
